@@ -1,0 +1,48 @@
+{
+  "chainId": "560000",
+  "chainName": "Hetu Mainnet",
+  "description": "Hetu Mainnet - High Performance Blockchain",
+  "chainLogoUri": null,
+  "l2": false,
+  "isTestnet": false,
+  "nativeCurrency": {
+    "name": "Hetu",
+    "symbol": "HETU",
+    "decimals": 18,
+    "logoUri": null
+  },
+  "transactionService": "http://transaction-service:8000",
+  "blockExplorerUriTemplate": {
+    "address": "https://explorer.hetu.org/address/{{address}}",
+    "txHash": "https://explorer.hetu.org/tx/{{txHash}}",
+    "api": "https://explorer.hetu.org/api"
+  },
+  "ensRegistryAddress": null,
+  "features": [
+    "CONTRACT_INTERACTION",
+    "EIP1559",
+    "ERC721",
+    "SAFE_APPS",
+    "SAFE_TX_GAS_OPTIONAL"
+  ],
+  "gasPrice": [],
+  "publicRpcUri": {
+    "authentication": "NO_AUTHENTICATION",
+    "value": "https://rpc.v1.hetu.org"
+  },
+  "rpcUri": {
+    "authentication": "NO_AUTHENTICATION",
+    "value": "https://rpc.v1.hetu.org"
+  },
+  "safeAppsRpcUri": {
+    "authentication": "NO_AUTHENTICATION",
+    "value": "https://rpc.v1.hetu.org"
+  },
+  "shortName": "hetu",
+  "theme": {
+    "textColor": "#001428",
+    "backgroundColor": "#E8E7E6"
+  },
+  "disabledWallets": [],
+  "recommendedMasterCopyVersion": "1.4.1"
+}

@@ -1,0 +1,304 @@
+2025-10-17T10:03:07:  ⚠ You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env
+2025-10-17T10:03:12: Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+2025-10-17T10:03:12:   npx update-browserslist-db@latest
+2025-10-17T10:03:12:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+2025-10-17T10:04:43:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:04:43:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:04:43:   22 |   {
+2025-10-17T10:04:43:   23 |     label: 'Home',
+2025-10-17T10:04:43: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:04:43:      |           ^
+2025-10-17T10:04:43:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:04:43:   26 |   },
+2025-10-17T10:04:43:   27 |   { {
+2025-10-17T10:04:43:   page: '/'
+2025-10-17T10:04:43: }
+2025-10-17T10:05:10:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:05:10:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:05:10:   22 |   {
+2025-10-17T10:05:10:   23 |     label: 'Home',
+2025-10-17T10:05:10: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:05:10:      |           ^
+2025-10-17T10:05:10:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:05:10:   26 |   },
+2025-10-17T10:05:10:   27 |   {
+2025-10-17T10:05:14: TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:05:14:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:05:14:   22 |   {
+2025-10-17T10:05:14:   23 |     label: 'Home',
+2025-10-17T10:05:14: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:05:14:      |           ^
+2025-10-17T10:05:14:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:05:14:   26 |   },
+2025-10-17T10:05:14:   27 |   { {
+2025-10-17T10:05:14:   page: '/'
+2025-10-17T10:05:14: }
+2025-10-17T10:05:14:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:05:14:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:05:14:   22 |   {
+2025-10-17T10:05:14:   23 |     label: 'Home',
+2025-10-17T10:05:14: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:05:14:      |           ^
+2025-10-17T10:05:14:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:05:14:   26 |   },
+2025-10-17T10:05:14:   27 |   {
+2025-10-17T10:05:14: [Error: ENOENT: no such file or directory, open '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'] {
+2025-10-17T10:05:14:   errno: -2,
+2025-10-17T10:05:14:   code: 'ENOENT',
+2025-10-17T10:05:14:   syscall: 'open',
+2025-10-17T10:05:14:   path: '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'
+2025-10-17T10:05:14: }
+2025-10-17T10:56:39:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:39:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:39:   22 |   {
+2025-10-17T10:56:39:   23 |     label: 'Home',
+2025-10-17T10:56:39: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:39:      |           ^
+2025-10-17T10:56:39:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:39:   26 |   },
+2025-10-17T10:56:39:   27 |   { {
+2025-10-17T10:56:39:   page: '/home'
+2025-10-17T10:56:39: }
+2025-10-17T10:56:44:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:44:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:44:   22 |   {
+2025-10-17T10:56:44:   23 |     label: 'Home',
+2025-10-17T10:56:44: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:44:      |           ^
+2025-10-17T10:56:44:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:44:   26 |   },
+2025-10-17T10:56:44:   27 |   {
+2025-10-17T10:56:44: TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:44:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:44:   22 |   {
+2025-10-17T10:56:44:   23 |     label: 'Home',
+2025-10-17T10:56:44: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:44:      |           ^
+2025-10-17T10:56:44:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:44:   26 |   },
+2025-10-17T10:56:44:   27 |   { {
+2025-10-17T10:56:44:   page: '/home'
+2025-10-17T10:56:44: }
+2025-10-17T10:56:44:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:44:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:44:   22 |   {
+2025-10-17T10:56:44:   23 |     label: 'Home',
+2025-10-17T10:56:44: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:44:      |           ^
+2025-10-17T10:56:44:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:44:   26 |   },
+2025-10-17T10:56:44:   27 |   {
+2025-10-17T10:56:44: [Error: ENOENT: no such file or directory, open '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'] {
+2025-10-17T10:56:44:   errno: -2,
+2025-10-17T10:56:44:   code: 'ENOENT',
+2025-10-17T10:56:44:   syscall: 'open',
+2025-10-17T10:56:44:   path: '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'
+2025-10-17T10:56:44: }
+2025-10-17T10:56:56:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:56:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:56:   22 |   {
+2025-10-17T10:56:56:   23 |     label: 'Home',
+2025-10-17T10:56:56: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:56:      |           ^
+2025-10-17T10:56:56:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:56:   26 |   },
+2025-10-17T10:56:56:   27 |   { {
+2025-10-17T10:56:56:   page: '/'
+2025-10-17T10:56:56: }
+2025-10-17T10:56:56:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:56:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:56:   22 |   {
+2025-10-17T10:56:56:   23 |     label: 'Home',
+2025-10-17T10:56:56: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:56:      |           ^
+2025-10-17T10:56:56:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:56:   26 |   },
+2025-10-17T10:56:56:   27 |   { {
+2025-10-17T10:56:56:   page: '/'
+2025-10-17T10:56:56: }
+2025-10-17T10:56:56: TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:56:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:56:   22 |   {
+2025-10-17T10:56:56:   23 |     label: 'Home',
+2025-10-17T10:56:56: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:56:      |           ^
+2025-10-17T10:56:56:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:56:   26 |   },
+2025-10-17T10:56:56:   27 |   { {
+2025-10-17T10:56:56:   page: '/'
+2025-10-17T10:56:56: }
+2025-10-17T10:56:56:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:56:56:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:56:56:   22 |   {
+2025-10-17T10:56:56:   23 |     label: 'Home',
+2025-10-17T10:56:56: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:56:56:      |           ^
+2025-10-17T10:56:56:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:56:56:   26 |   },
+2025-10-17T10:56:56:   27 |   { {
+2025-10-17T10:56:56:   page: '/'
+2025-10-17T10:56:56: }
+2025-10-17T10:56:56: [Error: ENOENT: no such file or directory, open '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'] {
+2025-10-17T10:56:56:   errno: -2,
+2025-10-17T10:56:56:   code: 'ENOENT',
+2025-10-17T10:56:56:   syscall: 'open',
+2025-10-17T10:56:56:   path: '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'
+2025-10-17T10:56:56: }
+2025-10-17T10:58:10:  ⚠ You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env
+2025-10-17T10:58:15: Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+2025-10-17T10:58:15:   npx update-browserslist-db@latest
+2025-10-17T10:58:15:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+2025-10-17T10:59:42:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:59:42:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:59:42:   22 |   {
+2025-10-17T10:59:42:   23 |     label: 'Home',
+2025-10-17T10:59:42: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:59:42:      |           ^
+2025-10-17T10:59:42:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:59:42:   26 |   },
+2025-10-17T10:59:42:   27 |   { {
+2025-10-17T10:59:42:   page: '/'
+2025-10-17T10:59:42: }
+2025-10-17T10:59:42:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T10:59:42:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T10:59:42:   22 |   {
+2025-10-17T10:59:42:   23 |     label: 'Home',
+2025-10-17T10:59:42: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T10:59:42:      |           ^
+2025-10-17T10:59:42:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T10:59:42:   26 |   },
+2025-10-17T10:59:42:   27 |   { {
+2025-10-17T10:59:42:   page: '/'
+2025-10-17T10:59:42: }
+2025-10-17T11:00:09:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:09:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:09:   22 |   {
+2025-10-17T11:00:09:   23 |     label: 'Home',
+2025-10-17T11:00:09: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:09:      |           ^
+2025-10-17T11:00:09:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:09:   26 |   },
+2025-10-17T11:00:09:   27 |   {
+2025-10-17T11:00:09:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:09:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:09:   22 |   {
+2025-10-17T11:00:09:   23 |     label: 'Home',
+2025-10-17T11:00:09: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:09:      |           ^
+2025-10-17T11:00:09:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:09:   26 |   },
+2025-10-17T11:00:09:   27 |   {
+2025-10-17T11:00:09:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:09:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:09:   22 |   {
+2025-10-17T11:00:09:   23 |     label: 'Home',
+2025-10-17T11:00:09: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:09:      |           ^
+2025-10-17T11:00:09:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:09:   26 |   },
+2025-10-17T11:00:09:   27 |   { {
+2025-10-17T11:00:09:   page: '/'
+2025-10-17T11:00:09: }
+2025-10-17T11:00:09:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:09:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:09:   22 |   {
+2025-10-17T11:00:09:   23 |     label: 'Home',
+2025-10-17T11:00:09: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:09:      |           ^
+2025-10-17T11:00:09:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:09:   26 |   },
+2025-10-17T11:00:09:   27 |   { {
+2025-10-17T11:00:09:   page: '/'
+2025-10-17T11:00:09: }
+2025-10-17T11:00:31: TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:31:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:31:   22 |   {
+2025-10-17T11:00:31:   23 |     label: 'Home',
+2025-10-17T11:00:31: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:31:      |           ^
+2025-10-17T11:00:31:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:31:   26 |   },
+2025-10-17T11:00:31:   27 |   { {
+2025-10-17T11:00:31:   page: '/'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:31:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:31:   22 |   {
+2025-10-17T11:00:31:   23 |     label: 'Home',
+2025-10-17T11:00:31: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:31:      |           ^
+2025-10-17T11:00:31:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:31:   26 |   },
+2025-10-17T11:00:31:   27 |   { {
+2025-10-17T11:00:31:   page: '/'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31: [Error: ENOENT: no such file or directory, open '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'] {
+2025-10-17T11:00:31:   errno: -2,
+2025-10-17T11:00:31:   code: 'ENOENT',
+2025-10-17T11:00:31:   syscall: 'open',
+2025-10-17T11:00:31:   path: '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31: TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:31:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:31:   22 |   {
+2025-10-17T11:00:31:   23 |     label: 'Home',
+2025-10-17T11:00:31: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:31:      |           ^
+2025-10-17T11:00:31:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:31:   26 |   },
+2025-10-17T11:00:31:   27 |   { {
+2025-10-17T11:00:31:   page: '/'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:31:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:31:   22 |   {
+2025-10-17T11:00:31:   23 |     label: 'Home',
+2025-10-17T11:00:31: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:31:      |           ^
+2025-10-17T11:00:31:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:31:   26 |   },
+2025-10-17T11:00:31:   27 |   { {
+2025-10-17T11:00:31:   page: '/'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31: TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:31:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:31:   22 |   {
+2025-10-17T11:00:31:   23 |     label: 'Home',
+2025-10-17T11:00:31: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:31:      |           ^
+2025-10-17T11:00:31:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:31:   26 |   },
+2025-10-17T11:00:31:   27 |   { {
+2025-10-17T11:00:31:   page: '/'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31:  ⨯ TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+2025-10-17T11:00:31:     at eval (src/features/spaces/components/SpaceSidebarNavigation/config.tsx:24:11)
+2025-10-17T11:00:31:   22 |   {
+2025-10-17T11:00:31:   23 |     label: 'Home',
+2025-10-17T11:00:31: > 24 |     icon: <SvgIcon component={HomeIcon} inheritViewBox />,
+2025-10-17T11:00:31:      |           ^
+2025-10-17T11:00:31:   25 |     href: AppRoutes.spaces.index,
+2025-10-17T11:00:31:   26 |   },
+2025-10-17T11:00:31:   27 |   { {
+2025-10-17T11:00:31:   page: '/'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31: [Error: ENOENT: no such file or directory, open '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'] {
+2025-10-17T11:00:31:   errno: -2,
+2025-10-17T11:00:31:   code: 'ENOENT',
+2025-10-17T11:00:31:   syscall: 'open',
+2025-10-17T11:00:31:   path: '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:31: [Error: ENOENT: no such file or directory, open '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'] {
+2025-10-17T11:00:31:   errno: -2,
+2025-10-17T11:00:31:   code: 'ENOENT',
+2025-10-17T11:00:31:   syscall: 'open',
+2025-10-17T11:00:31:   path: '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/required-server-files.json'
+2025-10-17T11:00:31: }
+2025-10-17T11:00:46: <w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/cache/webpack/client-development-fallback/0.pack.gz'
+2025-10-17T11:00:46: <w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/home/ubuntu/safe-space/safe-wallet-web/apps/web/.next/cache/webpack/client-development-fallback/0.pack.gz'
+2025-10-17T11:01:14: Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+2025-10-17T11:01:14:   npx update-browserslist-db@latest
+2025-10-17T11:01:14:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+2025-10-17T11:03:08:  ⚠ Cross origin request detected from 13.250.19.178 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+2025-10-17T11:03:08: Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+2025-10-24T03:28:19:  ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload

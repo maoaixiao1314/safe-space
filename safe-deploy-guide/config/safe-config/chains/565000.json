@@ -1,0 +1,48 @@
+{
+  "chainId": "565000",
+  "chainName": "Hetu Testnet",
+  "description": "Hetu Testnet - Custom Test Chain",
+  "chainLogoUri": null,
+  "l2": false,
+  "isTestnet": true,
+  "nativeCurrency": {
+    "name": "Hetu",
+    "symbol": "HETU",
+    "decimals": 18,
+    "logoUri": null
+  },
+  "transactionService": "http://transaction-service:8000",
+  "blockExplorerUriTemplate": {
+    "address": "http://161.97.161.133:18545/address/{{address}}",
+    "txHash": "http://161.97.161.133:18545/tx/{{txHash}}",
+    "api": "http://161.97.161.133:18545/api"
+  },
+  "ensRegistryAddress": null,
+  "features": [
+    "CONTRACT_INTERACTION",
+    "EIP1559",
+    "ERC721",
+    "SAFE_APPS",
+    "SAFE_TX_GAS_OPTIONAL"
+  ],
+  "gasPrice": [],
+  "publicRpcUri": {
+    "authentication": "NO_AUTHENTICATION",
+    "value": "http://161.97.161.133:18545"
+  },
+  "rpcUri": {
+    "authentication": "NO_AUTHENTICATION",
+    "value": "http://161.97.161.133:18545"
+  },
+  "safeAppsRpcUri": {
+    "authentication": "NO_AUTHENTICATION",
+    "value": "http://161.97.161.133:18545"
+  },
+  "shortName": "hetu-test",
+  "theme": {
+    "textColor": "#001428",
+    "backgroundColor": "#E8E7E6"
+  },
+  "disabledWallets": [],
+  "recommendedMasterCopyVersion": "1.4.1"
+}

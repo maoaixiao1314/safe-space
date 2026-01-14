@@ -1,0 +1,345 @@
+version: '3.8'
+
+services:
+  # Transaction Service 数据库
+  postgres:
+    image: postgres:14
+    container_name: safe-postgres
+    environment:
+      POSTGRES_DB: safe_transaction_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: safe_password_2024
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - safe-network
+
+  # Client Gateway 数据库
+  postgres-gateway:
+    image: postgres:14
+    container_name: safe-postgres-gateway
+    environment:
+      POSTGRES_DB: safe_client_gateway
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: safe_password_2024
+    volumes:
+      - postgres_gateway_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - safe-network
+
+  # 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: safe-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - safe-network
+
+  # RabbitMQ - Celery 消息队列
+  rabbitmq:
+    image: rabbitmq:alpine
+    container_name: safe-rabbitmq
+    ports:
+      - "5672:5672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    networks:
+      - safe-network
+
+  # Transaction Service - 核心后端服务
+  transaction-service:
+    image: safeglobal/safe-transaction-service:latest
+    container_name: safe-transaction-service
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      # Hetu 链配置
+      ETHEREUM_NODE_URL: http://161.97.161.133:18545
+      ETHEREUM_TRACING_NODE_URL: http://161.97.161.133:18545
+      ETHEREUM_CHAIN_ID: 560000
+      
+      # 数据库配置
+      DATABASE_URL: postgresql://postgres:safe_password_2024@postgres:5432/safe_transaction_db
+      
+      # Redis 配置
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      
+      # Safe 合约地址 - Hetu 链
+      SAFE_CONTRACT_ADDRESS: "0xF5628304ac05de2D7B641B16B89f1aeaBB0D0DA6"
+      SAFE_PROXY_FACTORY_ADDRESS: "0x85d989D30C98Ee86C6Ac63132Fda598926C29d43"
+      SAFE_MULTISEND_ADDRESS: "0x3c9887027266178802D3537DBa8D1D1890a5D938"
+      SAFE_MULTISEND_CALL_ONLY_ADDRESS: "0x12ed4A8694a884be22594697369c05954252182C"
+      SAFE_FALLBACK_HANDLER: "0x1D10B40369bDd36943EC786651071139Fc6cCb9F"
+      
+      # 其他配置
+      DJANGO_SECRET_KEY: "hetu-safe-secret-key-change-in-production-2024"
+      DJANGO_ALLOWED_HOSTS: "*"
+      DEBUG: "False"
+      
+      # 索引配置
+      ETH_REORG_BLOCKS: "10"
+      ETH_L2_NETWORK: "True"  # 启用L2模式以使用事件索引（Hetu不支持trace_block）
+      ETH_INTERNAL_NO_FILTER: "1"  # 额外保险，禁用trace_filter
+    ports:
+      - "8000:8888"  # 外部8000映射到容器内8888
+    command: docker/web/run_web.sh
+    networks:
+      - safe-network
+    restart: unless-stopped
+
+  # Transaction Service Worker - 处理异步任务
+  transaction-worker:
+    image: safeglobal/safe-transaction-service:latest
+    container_name: safe-transaction-worker
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      # 使用与 transaction-service 相同的环境变量
+      ETHEREUM_NODE_URL: http://161.97.161.133:18545
+      ETHEREUM_TRACING_NODE_URL: http://161.97.161.133:18545
+      ETHEREUM_CHAIN_ID: 560000
+      DATABASE_URL: postgresql://postgres:safe_password_2024@postgres:5432/safe_transaction_db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: amqp://guest:guest@rabbitmq:5672
+      SAFE_CONTRACT_ADDRESS: "0xF5628304ac05de2D7B641B16B89f1aeaBB0D0DA6"
+      SAFE_PROXY_FACTORY_ADDRESS: "0x85d989D30C98Ee86C6Ac63132Fda598926C29d43"
+      SAFE_MULTISEND_ADDRESS: "0x3c9887027266178802D3537DBa8D1D1890a5D938"
+      SAFE_MULTISEND_CALL_ONLY_ADDRESS: "0x12ed4A8694a884be22594697369c05954252182C"
+      SAFE_FALLBACK_HANDLER: "0x1D10B40369bDd36943EC786651071139Fc6cCb9F"
+      DJANGO_SECRET_KEY: "hetu-safe-secret-key-change-in-production-2024"
+      ETH_REORG_BLOCKS: "10"
+      ETH_L2_NETWORK: "True"  # 启用L2模式以使用事件索引（Hetu不支持trace_block）
+      ETH_INTERNAL_NO_FILTER: "1"  # 额外保险，禁用trace_filter
+      RUN_MIGRATIONS: "1"
+      WORKER_QUEUES: "default,indexing,processing"
+    command: docker/web/celery/worker/run.sh
+    networks:
+      - safe-network
+    restart: unless-stopped
+
+  # Transaction Service Scheduler - 定时任务
+  transaction-scheduler:
+    image: safeglobal/safe-transaction-service:latest
+    container_name: safe-transaction-scheduler
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      ETHEREUM_NODE_URL: http://161.97.161.133:18545
+      ETHEREUM_TRACING_NODE_URL: http://161.97.161.133:18545
+      ETHEREUM_CHAIN_ID: 560000
+      DATABASE_URL: postgresql://postgres:safe_password_2024@postgres:5432/safe_transaction_db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: amqp://guest:guest@rabbitmq:5672
+      SAFE_CONTRACT_ADDRESS: "0xF5628304ac05de2D7B641B16B89f1aeaBB0D0DA6"
+      SAFE_PROXY_FACTORY_ADDRESS: "0x85d989D30C98Ee86C6Ac63132Fda598926C29d43"
+      SAFE_MULTISEND_ADDRESS: "0x3c9887027266178802D3537DBa8D1D1890a5D938"
+      SAFE_MULTISEND_CALL_ONLY_ADDRESS: "0x12ed4A8694a884be22594697369c05954252182C"
+      SAFE_FALLBACK_HANDLER: "0x1D10B40369bDd36943EC786651071139Fc6cCb9F"
+      DJANGO_SECRET_KEY: "hetu-safe-secret-key-change-in-production-2024"
+      ETH_REORG_BLOCKS: "10"
+      ETH_L2_NETWORK: "True"  # 启用L2模式以使用事件索引（Hetu不支持trace_block）
+      ETH_INTERNAL_NO_FILTER: "1"  # 额外保险，禁用trace_filter
+    command: docker/web/celery/scheduler/run.sh
+    networks:
+      - safe-network
+    restart: unless-stopped
+
+  # Config Service - 链配置服务
+  config-service:
+    image: safeglobal/safe-config-service:latest
+    container_name: safe-config-service
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8001:8000"
+    environment:
+      # Django 配置
+      SECRET_KEY: "hetu-safe-config-secret-key-2024"
+      DJANGO_SECRET_KEY: "hetu-safe-config-secret-key-2024"
+      DJANGO_ALLOWED_HOSTS: "*"
+      DEBUG: "False"
+      ROOT_LOG_LEVEL: "INFO"
+      
+      # Gunicorn 配置
+      GUNICORN_BIND_PORT: "8000"
+      DOCKER_NGINX_VOLUME_ROOT: "/nginx"
+      GUNICORN_BIND_SOCKET: "unix:/nginx/gunicorn.socket"
+      
+      # 数据库配置 - 使用 transaction service 的数据库
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: safe_transaction_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: safe_password_2024
+      POSTGRES_NAME: safe_transaction_db
+      DATABASE_URL: postgresql://postgres:safe_password_2024@postgres:5432/safe_transaction_db
+      
+      # 文件存储配置
+      DEFAULT_FILE_STORAGE: "django.core.files.storage.FileSystemStorage"
+      
+      # CSRF 配置
+      CSRF_TRUSTED_ORIGINS: "http://localhost:8001"
+    volumes:
+      - nginx-shared:/nginx
+    networks:
+      - safe-network
+    restart: unless-stopped
+
+  # Client Gateway - API 网关
+  client-gateway:
+    image: safeglobal/safe-client-gateway-nest:latest
+    container_name: safe-client-gateway
+    depends_on:
+      postgres-gateway:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      transaction-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+    environment:
+      # 服务 URL
+      SAFE_CONFIG_BASE_URI: http://config-service:8000
+      TRANSACTION_SERVICE_URL: http://transaction-service:8888
+      
+      # 数据库配置
+      POSTGRES_HOST: postgres-gateway
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: safe_client_gateway
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: safe_password_2024
+      
+      # Redis 配置
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      
+      # RabbitMQ/AMQP 配置
+      AMQP_URI: amqp://guest:guest@rabbitmq:5672
+      AMQP_EXCHANGE_NAME: safe-transaction-service-events
+      AMQP_EXCHANGE_MODE: fanout
+      AMQP_QUEUE: safe-client-gateway
+      
+      # 应用配置
+      APPLICATION_PORT: 3000
+      LOG_LEVEL: info
+      AUTH_TOKEN: "hetu-safe-auth-token-2024"
+      
+      # API Keys (使用示例值，生产环境需要替换)
+      PRICES_PROVIDER_API_KEY: "example_api_key"
+      INFURA_API_KEY: "example_infura_key"
+      
+      # Email 配置 (使用示例值)
+      EMAIL_API_APPLICATION_CODE: "example_app_code"
+      EMAIL_API_FROM_EMAIL: "noreply@example.com"
+      EMAIL_API_KEY: "example_email_key"
+      EMAIL_TEMPLATE_RECOVERY_TX: "recovery_tx_template"
+      EMAIL_TEMPLATE_UNKNOWN_RECOVERY_TX: "unknown_recovery_tx_template"
+      EMAIL_TEMPLATE_VERIFICATION_CODE: "verification_code_template"
+      
+      # JWT 配置
+      JWT_ISSUER: "safe-client-gateway"
+      JWT_SECRET: "hetu-safe-jwt-secret-change-in-production"
+      
+      # 加密配置
+      FINGERPRINT_ENCRYPTION_KEY: "hetu-safe-fingerprint-key-32chars"
+      
+      # Push Notifications (使用示例值)
+      PUSH_NOTIFICATIONS_API_PROJECT: "example_project"
+      PUSH_NOTIFICATIONS_API_SERVICE_ACCOUNT_CLIENT_EMAIL: "example@example.com"
+      PUSH_NOTIFICATIONS_API_SERVICE_ACCOUNT_PRIVATE_KEY: "example_private_key"
+      
+      # Relay Provider API Keys (使用示例值)
+      RELAY_PROVIDER_API_KEY_OPTIMISM: "example_key"
+      RELAY_PROVIDER_API_KEY_BSC: "example_key"
+      RELAY_PROVIDER_API_KEY_GNOSIS_CHAIN: "example_key"
+      RELAY_PROVIDER_API_KEY_POLYGON: "example_key"
+      RELAY_PROVIDER_API_KEY_POLYGON_ZKEVM: "example_key"
+      RELAY_PROVIDER_API_KEY_BASE: "example_key"
+      RELAY_PROVIDER_API_KEY_ARBITRUM_ONE: "example_key"
+      RELAY_PROVIDER_API_KEY_AVALANCHE: "example_key"
+      RELAY_PROVIDER_API_KEY_LINEA: "example_key"
+      RELAY_PROVIDER_API_KEY_BLAST: "example_key"
+      RELAY_PROVIDER_API_KEY_SEPOLIA: "example_key"
+      
+      # Staking API Keys (使用示例值)
+      STAKING_API_KEY: "example_staking_key"
+      STAKING_TESTNET_API_KEY: "example_testnet_key"
+      
+      # CSV Export 配置 - 使用本地存储
+      CSV_EXPORT_FILE_STORAGE_TYPE: "local"
+      CSV_EXPORT_LOCAL_BASE_DIR: "/tmp/csv-export"
+      # AWS 占位符（即使使用本地存储也需要）
+      CSV_AWS_ACCESS_KEY_ID: "not_used_placeholder"
+      CSV_AWS_SECRET_ACCESS_KEY: "not_used_placeholder"
+      CSV_AWS_STORAGE_BUCKET_NAME: "not_used_placeholder"
+      CSV_AWS_S3_BASE_PATH: "not_used"
+      
+      # Targeted Messaging 配置 - 使用本地存储
+      TARGETED_MESSAGING_FILE_STORAGE_TYPE: "local"
+      TARGETED_MESSAGING_LOCAL_BASE_DIR: "/tmp/targeted-messaging"
+      # AWS 占位符（即使使用本地存储也需要）
+      AWS_ACCESS_KEY_ID: "not_used_placeholder"
+      AWS_SECRET_ACCESS_KEY: "not_used_placeholder"
+      AWS_STORAGE_BUCKET_NAME: "not_used_placeholder"
+      AWS_S3_BASE_PATH: "not_used"
+      
+      # Bridge API Key (使用示例值)
+      BRIDGE_API_KEY: "example_bridge_key"
+      
+      # Zerion API (使用示例值)
+      ZERION_API_KEY: "example_zerion_key"
+    ports:
+      - "3001:3000"
+    networks:
+      - safe-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  postgres_gateway_data:
+  nginx-shared:
+
+networks:
+  safe-network:
+    driver: bridge

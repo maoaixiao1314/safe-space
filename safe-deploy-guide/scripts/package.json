@@ -1,0 +1,8 @@
+{
+  "name": "safe-deploy-scripts",
+  "version": "1.0.0",
+  "description": "Safe deployment scripts utilities",
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  }
+}

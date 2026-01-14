@@ -1,0 +1,34 @@
+Safe Wallet Deployment Information
+===================================
+
+Deployment Date: Thu Oct 16 06:35:22 UTC 2025
+Network: hetu
+Chain ID: 560000
+Is L2: true
+Is Mainnet: false
+
+Deployed Contracts:
+{
+  "Safe": "0xc53E2b4a2C981B7AaB422eE93e8aE6ED6B6e19Fc",
+  "SafeL2": "0xeF53e7B1bC9b520d71C7B667E97E8E90cF7ad758",
+  "SafeProxyFactory": "0xF33dd7eAaeBb410b53cc2B088CD944F7910A791A",
+  "CompatibilityFallbackHandler": "0x240beE66cf9109826ab954eD17D4753539Af8A7b",
+  "MultiSend": "0x6E913540ac3135F7EE14336cDbdD903d1deDa8FA",
+  "MultiSendCallOnly": "0xfb80593E2B6339Fa57013D87c4e932aA4E10644D",
+  "SignMessageLib": "0x82C6723F6c459546591DBAc5eB0EbcC54cBe77B8",
+  "CreateCall": "0xd762DEcFffb9B1cE53bF42B2B645b1D123f0B456",
+  "SimulateTxAccessor": "0xeD33bA24d653c3D696ccc7e872D12909977B02D3"
+}
+
+RPC URL: http://161.97.161.133:18545
+
+Next Steps:
+- Register SafeL2 in Transaction Service
+- Update Safe Web SDK configuration
+- Create a new Safe using SafeProxyFactory
+- Test Safe creation and transaction execution
+
+Notes:
+- Keep this file for your records
+- Do not share private keys or mnemonics
+- Verify all contract addresses before using in production

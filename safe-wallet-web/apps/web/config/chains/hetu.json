@@ -1,0 +1,66 @@
+{
+  "chainId": "560000",
+  "chainName": "Hetu Mainnet",
+  "description": "Hetu Mainnet - High Performance Blockchain",
+  "chainLogoUri": null,
+  "l2": true,
+  "isTestnet": false,
+  "zk": false,
+  "nativeCurrency": {
+    "name": "Hetu",
+    "symbol": "HETU",
+    "decimals": 18,
+    "logoUri": null
+  },
+  "transactionService": "http://localhost:3001",
+  "blockExplorerUriTemplate": {
+    "address": "https://explorer.hetu.org/address/{{address}}",
+    "txHash": "https://explorer.hetu.org/tx/{{txHash}}",
+    "api": "https://explorer.hetu.org/api"
+  },
+  "beaconChainExplorerUriTemplate": {
+    "publicKey": null
+  },
+  "disabledWallets": [],
+  "ensRegistryAddress": null,
+  "features": [],
+  "gasPrice": [
+    {
+      "type": "fixed",
+      "weiValue": "1000000000"
+    }
+  ],
+  "publicRpcUri": {
+    "authentication": "UNKNOWN",
+    "value": "https://rpc.v1.hetu.org"
+  },
+  "rpcUri": {
+    "authentication": "UNKNOWN",
+    "value": "https://rpc.v1.hetu.org"
+  },
+  "safeAppsRpcUri": {
+    "authentication": "UNKNOWN",
+    "value": "https://rpc.v1.hetu.org"
+  },
+  "shortName": "hetu",
+  "theme": {
+    "textColor": "#ffffff",
+    "backgroundColor": "#000000"
+  },
+  "balancesProvider": {
+    "chainName": null,
+    "enabled": false
+  },
+  "contractAddresses": {
+    "safeSingletonAddress": "0xeF53e7B1bC9b520d71C7B667E97E8E90cF7ad758",
+    "safeProxyFactoryAddress": "0xF33dd7eAaeBb410b53cc2B088CD944F7910A791A",
+    "multiSendAddress": "0x6E913540ac3135F7EE14336cDbdD903d1deDa8FA",
+    "multiSendCallOnlyAddress": "0xfb80593E2B6339Fa57013D87c4e932aA4E10644D",
+    "fallbackHandlerAddress": "0x240beE66cf9109826ab954eD17D4753539Af8A7b",
+    "signMessageLibAddress": "0x82C6723F6c459546591DBAc5eB0EbcC54cBe77B8",
+    "createCallAddress": "0xd762DEcFffb9B1cE53bF42B2B645b1D123f0B456",
+    "simulateTxAccessorAddress": "0xeD33bA24d653c3D696ccc7e872D12909977B02D3",
+    "safeWebAuthnSignerFactoryAddress": null
+  },
+  "recommendedMasterCopyVersion": "1.3.0"
+}

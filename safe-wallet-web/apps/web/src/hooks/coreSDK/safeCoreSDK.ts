@@ -45,14 +45,14 @@ export const initSafeSDK = async ({
       // Hetu Mainnet (560000) contract addresses
       contractNetworks = {
         [chainId]: {
-          safeSingletonAddress: '0x0000000000000000000000000000000000000000', // TODO: Update after mainnet deployment
-          safeProxyFactoryAddress: '0x0000000000000000000000000000000000000000',
-          multiSendAddress: '0x0000000000000000000000000000000000000000',
-          multiSendCallOnlyAddress: '0x0000000000000000000000000000000000000000',
-          fallbackHandlerAddress: '0x0000000000000000000000000000000000000000',
-          signMessageLibAddress: '0x0000000000000000000000000000000000000000',
-          createCallAddress: '0x0000000000000000000000000000000000000000',
-          simulateTxAccessorAddress: '0x0000000000000000000000000000000000000000',
+          safeSingletonAddress: '0x26B06FBdBDc84Ae740b4Ed3c9A2588Bd63Da3582',
+          safeProxyFactoryAddress: '0x0b09bda80A011073ea460A352ec9396D8C683902',
+          multiSendAddress: '0x87405963a42c8B078Cc15ced44b8d44BD23f1c3B',
+          multiSendCallOnlyAddress: '0xC39A8220Ac4EAA811E4378663322Ec64396De0c5',
+          fallbackHandlerAddress: '0xa1d7792Fdd620246330383868e811916Ef3d0ba5',
+          signMessageLibAddress: '0x33AE7D25F283fc461Ae5713774D579faf935D8B7',
+          createCallAddress: '0xdAa7CB84cFf22481306b079088716013bf69A0a5',
+          simulateTxAccessorAddress: '0xd2dBE2ec98A60Da8f33159314dF11EAF8d7E08Ba',
         },
       }
     } else if (chainId === HETU_TESTNET_CHAIN_ID) {

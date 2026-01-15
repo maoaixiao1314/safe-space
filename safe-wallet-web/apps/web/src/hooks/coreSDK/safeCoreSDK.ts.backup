@@ -59,14 +59,14 @@ export const initSafeSDK = async ({
       // Hetu Testnet (565000) contract addresses
       contractNetworks = {
         [chainId]: {
-          safeSingletonAddress: '0xA677b0ca4c2B2111AE2C1c9Af76D6a72686243E7',
-          safeProxyFactoryAddress: '0x988b0B915D7A6DE89BB65412B74A2569A5997e42',
-          multiSendAddress: '0x35A6996631d63A0bc0835039846b06e879fA1f14',
-          multiSendCallOnlyAddress: '0x4245f1F900335fD202073aD97F650966F00793B9',
-          fallbackHandlerAddress: '0x30B0019dec7cd9941373aaB43cA0866169e8a070',
-          signMessageLibAddress: '0x957217c411986CF25eD4404E903B75c5ABFb25a3',
-          createCallAddress: '0x5c151526F8526ADbf732AF8b679BacB89cb9B1c4',
-          simulateTxAccessorAddress: '0x7eBf011113D7Ca2FEFB878D67905fD27E9496d53',
+          safeSingletonAddress: '0x279caD2eA77c124e5c65091333E9c3FfE1ee5aCf',
+          safeProxyFactoryAddress: '0xa812FaE86c9d12E90daaD723BDb45e2bd7C6768B',
+          multiSendAddress: '0x3c6449611F1Fc8d9Fa1b31518dDa905e21964708',
+          multiSendCallOnlyAddress: '0xd3199A49C2889F8742b4A5Dcd79FfCf6F334Fd0a',
+          fallbackHandlerAddress: '0x18124e6926F529cd7B994704d2BF4ed6FCbB9d6C',
+          signMessageLibAddress: '0x5671A4892a43b47d3534f4423f96F53f59Ae18BD',
+          createCallAddress: '0x9a120428267Cfa508087cca498610237174221c5',
+          simulateTxAccessorAddress: '0x62fBfdD30c4E8820e4aaf07C8957a361dfaAdecB',
         },
       }
     }
@@ -89,38 +89,34 @@ export const initSafeSDK = async ({
       try {
         const code = await provider.getCode(masterCopy)
 
-        if (!code || code === '0x') {
+        if (code && code !== '0x') {
+          const codeHash = keccak256(code)
+          const isUpgradeableL2MasterCopy = isL2MasterCopyCodeHash(codeHash)
+
+          if (isUpgradeableL2MasterCopy) {
+            const upgradeableVersion = getL2MasterCopyVersionByCodeHash(codeHash)
+
+            if (upgradeableVersion) {
+              // Use the custom mastercopy address with the SDK
+              contractNetworks = {
+                [chainId]: {
+                  safeSingletonAddress: masterCopy,
+                },
+              }
+
+              safeVersion = upgradeableVersion
+              isL1SafeSingleton = false
+            } else {
+              console.warn(`[SafeSDK] Could not determine version for L2 mastercopy at ${masterCopy}`)
+            }
+          } else {
+            console.warn(`[SafeSDK] Mastercopy at ${masterCopy} is not a recognized L2 mastercopy`)
+          }
+        } else {
           console.warn(`[SafeSDK] No bytecode found for mastercopy at ${masterCopy}`)
-          return
         }
-
-        const codeHash = keccak256(code)
-        const isUpgradeableL2MasterCopy = isL2MasterCopyCodeHash(codeHash)
-
-        if (!isUpgradeableL2MasterCopy) {
-          console.warn(`[SafeSDK] Mastercopy at ${masterCopy} is not a recognized L2 mastercopy`)
-          return
-        }
-
-        const upgradeableVersion = getL2MasterCopyVersionByCodeHash(codeHash)
-
-        if (!upgradeableVersion) {
-          console.warn(`[SafeSDK] Could not determine version for L2 mastercopy at ${masterCopy}`)
-          return
-        }
-
-        // Use the custom mastercopy address with the SDK
-        contractNetworks = {
-          [chainId]: {
-            safeSingletonAddress: masterCopy,
-          },
-        }
-
-        safeVersion = upgradeableVersion
-        isL1SafeSingleton = false
       } catch (error) {
         logError(Errors._808, error)
-        return
       }
     }
 

@@ -1,3 +1,13 @@
+Safe Wallet Deployment Information
+===================================
+
+Deployment Date: Thu Jan 15 09:41:40 UTC 2026
+Network: hetu-mainnet
+Chain ID: 560000
+Is L2: false
+Is Mainnet: true
+
+Deployed Contracts:
 {
   "Safe": "0x53720bc16D5eE6387d1313E2F05A5C9181f0dD08",
   "SafeL2": "0x26B06FBdBDc84Ae740b4Ed3c9A2588Bd63Da3582",
@@ -9,3 +19,16 @@
   "CreateCall": "0xdAa7CB84cFf22481306b079088716013bf69A0a5",
   "SimulateTxAccessor": "0xd2dBE2ec98A60Da8f33159314dF11EAF8d7E08Ba"
 }
+
+RPC URL: https://rpc.v1.hetu.org
+
+Next Steps:
+
+- Update Safe Web SDK configuration
+- Create a new Safe using SafeProxyFactory
+- Test Safe creation and transaction execution
+
+Notes:
+- Keep this file for your records
+- Do not share private keys or mnemonics
+- Verify all contract addresses before using in production

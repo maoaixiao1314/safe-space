@@ -45,8 +45,9 @@ const useConnectWallet = () => {
           
           // Import fresh chain data
           const { selectChains } = await import('@/store/chainsSlice')
-          const store = await import('@/store')
-          const state = store.store.getState()
+          const { makeStore } = await import('@/store')
+          const storeInstance = makeStore()
+          const state = storeInstance.getState()
           const chainsState = selectChains(state)
           
           console.log('🔧 useConnectWallet: Checking chains...', {

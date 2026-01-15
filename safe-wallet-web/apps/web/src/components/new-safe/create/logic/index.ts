@@ -3,7 +3,6 @@ import { type TransactionResponse, type Eip1193Provider, type Provider } from 'e
 import semverSatisfies from 'semver/functions/satisfies'
 
 import { getSafeInfo, type SafeInfo, type ChainInfo, relayTransaction } from '@safe-global/safe-gateway-typescript-sdk'
-import type { Chain } from '@safe-global/store/gateway/AUTO_GENERATED/chains'
 import { getReadOnlyProxyFactoryContract } from '@/services/contracts/safeContracts'
 import type { UrlObject } from 'url'
 import { AppRoutes } from '@/config/routes'
@@ -210,7 +209,7 @@ export const createNewUndeployedSafeWithoutSalt = (
   safeAccountConfig: Pick<ReplayedSafeProps['safeAccountConfig'], 'owners' | 'threshold'> & {
     paymentReceiver?: string
   },
-  chain: Chain,
+  chain: ChainInfo,
 ): UndeployedSafeWithoutSalt => {
   // Create universal deployment Data across chains:
   const fallbackHandlerDeployments = getCompatibilityFallbackHandlerDeployments({
@@ -245,9 +244,8 @@ export const createNewUndeployedSafeWithoutSalt = (
   const safeToL2SetupInterface = Safe_to_l2_setup__factory.createInterface()
 
   // Only do migration if the chain supports multiChain deployments and has a SafeToL2Setup deployment
-  const chainInfo = chain as any // Temporary workaround for type compatibility
   const includeMigration =
-    hasMultiChainCreationFeatures(chainInfo) && semverSatisfies(safeVersion, '>=1.4.1') && Boolean(safeToL2SetupAddress)
+    hasMultiChainCreationFeatures(chain) && semverSatisfies(safeVersion, '>=1.4.1') && Boolean(safeToL2SetupAddress)
 
   console.log('🔧 createNewSafe: Master copy selection logic:', {
     chainId: chain.chainId,
